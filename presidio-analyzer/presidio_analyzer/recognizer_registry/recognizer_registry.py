@@ -87,7 +87,7 @@ from presidio_analyzer.predefined_recognizers import (
     UsBankRecognizer,
     UsItinRecognizer,
     UsLicenseRecognizer,
-    UsPassportRecognizer,
+    # UsPassportRecognizer,
     UsSsnRecognizer,
 )
 
@@ -170,8 +170,13 @@ class RecognizerRegistry:
 
         recognizers_map = {
             "en": [
-                AbaRoutingRecognizer,
-                AtPassportRecognizer,
+                UsBankRecognizer,
+                UsLicenseRecognizer,
+                UsItinRecognizer,
+                # UsPassportRecognizer,
+                UsSsnRecognizer,
+                NhsRecognizer,
+                SgFinRecognizer,
                 AuAbnRecognizer,
                 AuAcnRecognizer,
                 AuBankAccountRecognizer,

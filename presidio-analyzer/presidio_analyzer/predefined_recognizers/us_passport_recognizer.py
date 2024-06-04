@@ -1,6 +1,8 @@
 from typing import List, Optional, Tuple
+from typing import List, Optional, Tuple
 
 from presidio_analyzer import Pattern, PatternRecognizer
+import re
 import re
 
 class UsPassportRecognizer(PatternRecognizer):
@@ -55,7 +57,13 @@ class UsPassportRecognizer(PatternRecognizer):
         supported_entity: str = "US_PASSPORT",
         replacement_pairs: Optional[List[Tuple[str, str]]] = None,
         regex_flags = re.IGNORECASE
+        replacement_pairs: Optional[List[Tuple[str, str]]] = None,
+        regex_flags = re.IGNORECASE
     ):
+        self.replacement_pairs = (
+            replacement_pairs if replacement_pairs else [("-", ""), (" ", "")]
+        )
+
         self.replacement_pairs = (
             replacement_pairs if replacement_pairs else [("-", ""), (" ", "")]
         )
@@ -67,6 +75,7 @@ class UsPassportRecognizer(PatternRecognizer):
             patterns=patterns,
             context=context,
             supported_language=supported_language,
+            global_regex_flags=regex_flags
             global_regex_flags=regex_flags
         )
 
